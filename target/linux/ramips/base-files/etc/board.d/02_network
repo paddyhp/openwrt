@@ -74,6 +74,7 @@ ramips_setup_interfaces()
 	miwifi-mini|\
 	miwifi-nano|\
 	mt7621|\
+	d1|\
 	mt7628|\
 	mzk-750dhp|\
 	mzk-w300nh2|\

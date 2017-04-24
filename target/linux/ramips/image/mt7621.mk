@@ -171,6 +171,14 @@ define Device/sk-wb8
 endef
 TARGET_DEVICES += sk-wb8
 
+define Device/d1
+  DTS := D1
+  IMAGE_SIZE := $(ralink_default_fw_size_32M)
+  DEVICE_TITLE := Newifi D1
+#  DEVICE_PACKAGES := kmod-usb3 kmod-ledtrig-usbdev uboot-envtools
+endef
+TARGET_DEVICES += D1
+
 # FIXME: is this still needed?
 define Image/Prepare
 #define Build/Compile
