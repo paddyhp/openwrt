@@ -1,0 +1,26 @@
+Index: mt76x2e-3.0.4.0/rlt_wifi_ap/Makefile
+===================================================================
+--- mt76x2e-3.0.4.0.orig/rlt_wifi_ap/Makefile
++++ mt76x2e-3.0.4.0/rlt_wifi_ap/Makefile
+@@ -1,6 +1,7 @@
+ EXTRA_CFLAGS = -I$(src)/../rlt_wifi/include -I$(src)/../rlt_wifi/ate/include
+ DRV_NAME = mt76x2e
+ RT_WIFI_DIR = ../rlt_wifi
++EXTRA_CFLAGS += -Wno-error=date-time
+ 
+ ########################################################
+ # Common files
+Index: mt76x2e-3.0.4.0/rlt_wifi/os/linux/rt_profile.c
+===================================================================
+--- mt76x2e-3.0.4.0.orig/rlt_wifi/os/linux/rt_profile.c
++++ mt76x2e-3.0.4.0/rlt_wifi/os/linux/rt_profile.c
+@@ -270,7 +270,8 @@ NDIS_STATUS	RTMPReadParametersHook(RTMP_
+ 		{
+ #ifndef OS_ABL_SUPPORT
+ 			// TODO: need to roll back when convert into OSABL code
+-				 fsize = (ULONG)srcf->f_dentry->d_inode->i_size;
++			//	 fsize = (ULONG)srcf->f_dentry->d_inode->i_size;
++				fsize = (ULONG)srcf->f_path.dentry->d_inode->i_size;
+ 				if (buf_size < (fsize + 1))
+ 					buf_size = fsize + 1;
+ #endif /* OS_ABL_SUPPORT */
